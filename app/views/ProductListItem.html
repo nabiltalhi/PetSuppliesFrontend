@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-3 col-xs-12" ng-repeat="p in allProducts">
+        <h2>{{p.name}}</h2>
+        <div class="col-md-12">{{p.description}}</div>
+        <div class="col-md-12">&euro;{{p.price}}</div>
+        <button type="button" class="btn" ng-click="addToCart(p)">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            Toevoegen aan winkelwagen
+        </button>
+    </div>
+</div>
