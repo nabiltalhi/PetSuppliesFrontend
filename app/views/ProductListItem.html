@@ -3,8 +3,8 @@
         <h2>{{p.name}}</h2>
         <div class="col-md-12">{{p.description}}</div>
         <div class="col-md-12">&euro;{{p.price}}</div>
-        <div class="col-md-12">Stock: {{p.stock}}</div>
-        <button type="button" class="btn" ng-click="addToCart(p)">
+        <div class="col-md-12">Vooraad: {{p.stock}}</div>
+        <button type="button" class="btn" ng-controller="ShoppingCartController" ng-click="addToCart(p)">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             Toevoegen aan winkelwagen
         </button>

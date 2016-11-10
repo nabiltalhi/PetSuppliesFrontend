@@ -1,19 +1,20 @@
 <div class="container">
+    
     <div class="row">
         <div class="col-sm-12 col-md-10 col-xs-12 col-md-offset-1">
             <table class="table table-hover" ng-init="total = 0">
                 <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Quantity</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
+                        <th>Aantal</th>
+                        <th class="text-center">Prijs</th>
+                        <th class="text-center">Totaal</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in CartItems">
-                        <td class="col-sm-8 col-md-6 col-xs-12">
+                        <td class="col-sm-7 col-md-6">
                         <div class="media">
                             <a class="thumbnail pull-left hide" href="#"> <img class="media-object " src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
@@ -22,15 +23,27 @@
                                 <!--<span>Status: </span><span class="text-success"><strong>In Stock</strong></span>-->
                             </div>
                         </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="text" class="form-control" id="quantity-{{item.quantity}}" value="{{item.quantity}}" disabled>
+                        <td class="col-sm-2 col-md-2" style="text-align: center">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number" min="0" step="1" ng-click="removeFromCart(item.product)">
+                                        <i class="glyphicon glyphicon-minus"></i>
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control input-number" ng-model="item.quantity" ng-value="{{item.quantity}}" disabled>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number" ng-click="addToCart(item.product)">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>&euro; {{item.product.price}}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong ng-init="$parent.total = $parent.total+(item.quantity * item.product.price)">&euro; {{item.quantity * item.product.price}}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                            <!--<button type="button" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-remove"></span> Remove
-                            </button>-->
+                            <button type="button" class="btn btn-danger" ng-controller="ProductsController" ng-click="deleteProductFromCart(item.product); ">
+                                <span class="glyphicon glyphicon-remove"></span> Verwijderen
+                            </button>
                         </td>
                     </tr>
                     <!--
@@ -53,7 +66,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>&euro; <span>{{(total) | number:2}}</span></strong></h3></td>
+                        <td class="text-right"><h3><strong>&euro; <span>{{(TotalPrice()) | number: 2}}</span></strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
@@ -62,14 +75,17 @@
                         <td>
                             <a href="#/home">    
                                 <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Verder winkelen
                                 </button>
                             </a>
                         </td>
                         <td>
-                        <!--<button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>-->
+                            <a href="#/shoppingCart/OrdercheckOut">    
+                                <button type="button" class="btn btn-success">
+                                    Naar betalen <span class="glyphicon glyphicon-play"></span>
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

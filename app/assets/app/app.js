@@ -8,6 +8,8 @@ angular.module('myApp', [
     config(function ($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'views/ProductListItem.html', controller: 'ProductsController'});
         $routeProvider.when('/shoppingCart', {templateUrl: 'views/ShoppingCartListItem.html', controller: 'ShoppingCartController'});
+        $routeProvider.when('/shoppingCart/OrdercheckOut', {templateUrl: 'views/OrdercheckOut.html', controller: 'orderController'});
+        $routeProvider.when('/shoppingCart/OrderConfirmation', {templateUrl: 'views/OrderConfirmation.html', controller: 'orderController'});
         
         $routeProvider.otherwise({redirectTo: '/home'});
     });
