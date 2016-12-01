@@ -1,9 +1,18 @@
 'use strict';
 
-angular.module('myApp.directives', []).
-        directive('AppVersion', ['version', function (version) {
-                return function (scope, elm, attrs) {
-                    elm.text(version);
-                };
-
-            }]);
+app.directive('notification', function($timeout){
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      ngModel: '='
+    },
+    template: '<div class="alert fade" bs-alert="ngModel"></div>',
+    link: function(scope, element, attrs) {
+      $timeout(function(){
+        element.empty();
+        element.hide();
+      }, 5000);
+    }
+  };
+});

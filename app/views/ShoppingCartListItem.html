@@ -1,7 +1,8 @@
 <div class="container">
-    
     <div class="row">
         <div class="col-sm-12 col-md-10 col-xs-12 col-md-offset-1">
+            <!-- Form Name -->
+                    <legend>Uw winkelwagen</legend>
             <table class="table table-hover" ng-init="total = 0">
                 <thead>
                     <tr>
@@ -38,8 +39,8 @@
                                 </span>
                             </div>
                         </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>&euro; {{item.product.price}}</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong ng-init="$parent.total = $parent.total+(item.quantity * item.product.price)">&euro; {{item.quantity * item.product.price}}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>&euro; {{item.product.price | number:2}}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong ng-init="$parent.total = $parent.total+(item.quantity * item.product.price)">&euro; {{(item.quantity * item.product.price) | number:2}}</strong></td>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger" ng-controller="ProductsController" ng-click="deleteProductFromCart(item.product); ">
                                 <span class="glyphicon glyphicon-remove"></span> Verwijderen
@@ -65,11 +66,13 @@
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h3>Total</h3></td>
+                        <td><h3>Totaal</h3></td>
                         <td class="text-right"><h3><strong>&euro; <span>{{(TotalPrice()) | number: 2}}</span></strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
+                        <td>   </td>
+
                         <td>   </td>
                         <td>   </td>
                         <td>
@@ -79,16 +82,89 @@
                                 </button>
                             </a>
                         </td>
-                        <td>
+                        <!--<td>
                             <a href="#/shoppingCart/OrdercheckOut">    
                                 <button type="button" class="btn btn-success">
-                                    Naar betalen <span class="glyphicon glyphicon-play"></span>
+                                    Naar bestellen <span class="glyphicon glyphicon-play"></span>
                                 </button>
                             </a>
-                        </td>
+                        </td>-->
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<div class="row">
+        <div class="col-sm-12 col-md-10 col-xs-12 col-md-offset-1">
+            <form class="form-horizontal" ng-controller="orderController" ng-submit="SaveOrder()">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Uw gegevens</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Voornaam</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="firstName">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Achternaam</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="lastName">
+
+                        </div>
+                    </div
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Adres</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="address">
+
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Postcode</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="postalCode">
+
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Stad</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="city">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">E-mailadres</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="emailAddress">
+
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-success" ng-disabled="!((CountCartItems() > 0) && isFormFilled())">Bestellen</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>

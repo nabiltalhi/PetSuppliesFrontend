@@ -1,12 +1,42 @@
 
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-            <form class="form-horizontal" ng-submit="SaveOrder()" action="#/shoppingCart/OrderConfirmation">
+            <form class="form-horizontal" ng-submit="RegisterAccount()">
                 <fieldset>
-
+                    
+                    <div class="alert alert-danger" role="alert" ng-show="showMessage">{{message}}</div>
+    
                     <!-- Form Name -->
-                    <legend>Uw gegevens</legend>
+                    <legend>Account aanmaken bij Pet Supplies</legend>
 
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">E-mailadres</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="emailAddress">
+
+                        </div>
+                    </div>
+
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Wachtwoord</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="password" placeholder="" class="form-control input-md" ng-model="password">
+
+                        </div>
+                    </div
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Wachtwoord herhalen</label>  
+                        <div class="col-md-4">
+                            <input id="textinput" name="textinput" type="password" placeholder="" class="form-control input-md" ng-model="passwordRepeat">
+
+                        </div>
+                    </div
+                    
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="textinput">Voornaam</label>  
@@ -50,20 +80,11 @@
                         </div>
                     </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">E-mailadres</label>  
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="emailAddress">
-
-                        </div>
-                    </div>
-
                     <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton"></label>
                         <div class="col-md-4">
-                            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Bestellen</button>
+                            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Account aanmaken</button>
                         </div>
                     </div>
 
